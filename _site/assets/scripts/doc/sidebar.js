@@ -12,13 +12,18 @@ export function closeSidebar() {
 	document.getElementById('sidebar').classList.remove('active')
 }
 
-export function registerSidebarBtn() {
-	const btn = document.getElementById('toggle-sidebar')
-	btn.addEventListener('click', () => {
+export function registerSidebar() {
+	const menuBtn = document.getElementById('toggle-sidebar')
+	menuBtn.addEventListener('click', () => {
 		if (sidebarOpened) {
 			closeSidebar()
 		} else {
 			openSidebar()
 		}
+	})
+
+	const sidebar = document.getElementById('sidebar')
+	sidebar.addEventListener('click', () => {
+		closeSidebar()
 	})
 }

@@ -658,20 +658,25 @@
 		document.getElementById('sidebar').classList.remove('active');
 	}
 
-	function registerSidebarBtn() {
-		var btn = document.getElementById('toggle-sidebar');
-		btn.addEventListener('click', function () {
+	function registerSidebar() {
+		var menuBtn = document.getElementById('toggle-sidebar');
+		menuBtn.addEventListener('click', function () {
 			if (sidebarOpened) {
 				closeSidebar();
 			} else {
 				openSidebar();
 			}
 		});
+
+		var sidebar = document.getElementById('sidebar');
+		sidebar.addEventListener('click', function () {
+			closeSidebar();
+		});
 	}
 
 	calcMinHeight();
 	window.addEventListener('resize', calcMinHeight);
 
-	registerSidebarBtn();
+	registerSidebar();
 
 }());

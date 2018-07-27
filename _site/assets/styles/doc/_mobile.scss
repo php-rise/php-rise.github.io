@@ -7,10 +7,17 @@
 		position: fixed;
 		top: 0;
 		height: 40px;
+		z-index: 100;
 
 		.open-sidebar {
 			display: block;
 		}
+	}
+
+	a.anchor {
+		display: block;
+		position: relative;
+		top: -40px;
 	}
 
 	#toggle-sidebar {

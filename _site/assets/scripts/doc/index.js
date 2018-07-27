@@ -1,7 +1,7 @@
 import {calcMinHeight} from './body-min-height'
-import {registerSidebarBtn} from './sidebar'
+import {registerSidebar} from './sidebar'
 
 calcMinHeight()
 window.addEventListener('resize', calcMinHeight)
 
-registerSidebarBtn()
+registerSidebar()
