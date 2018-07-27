@@ -1,0 +1,166 @@
+// extend.name: ./_layout
+// extend.props.title: Getting Started
+// imports.toc: ../common/_toc
+<h1>Getting Started</h1>
+
+<%-imports.toc({menus: [
+	{
+		name: 'Requirements',
+		url: '#requirements',
+	},
+	{
+		name: 'Installation',
+		url: '#install',
+		children: [
+			{
+				name: 'Using composer',
+				url: '#install-using-composer'
+			},
+			{
+				name: 'Clone skeleton project',
+				url: '#install-clone-skeleton'
+			},
+		]
+	},
+	{
+		name: 'Project Structure',
+		url: '#project-structure',
+	},
+	{
+		name: 'Starting Up the Website',
+		url: '#starting-up',
+		children: [
+			{
+				name: 'PHP Built-in Server',
+				url: 'starting-up-built-in-server'
+			},
+		]
+	},
+]})%>
+
+<h2 id="requirements">
+	<a href="#requirements">Requirements</a>
+</h2>
+
+<p>
+	<ul>
+		<li>PHP 7</li>
+	</ul>
+</p>
+
+<h2 id="install">
+	<a href="#install">Installation</a>
+</h2>
+
+<h4 id="install-using-composer">
+	<a href="#install-using-composer">Using composer</a>
+</h4>
+
+<pre><code class="language-bash">composer create-project php-rise/rise-skeleton my-project</code></pre>
+
+<h4 id="install-clone-skeleton">
+	<a href="#install-clone-skeleton">Clone skeleton project</a>
+</h4>
+
+<pre><code class="language-bash">git clone -b <%=version%> --depth 1 https://github.com/php-rise/rise-skeleton.git my-project
+cd my-project
+rm -rf .git
+composer install
+</code></pre>
+
+<h2 id="project-structure">
+	<a href="#project-structure">Project Structure</a>
+</h2>
+
+<p>
+	<table class="responsive-2-col">
+		<thead>
+			<tr>
+				<th>File / Folder</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>assets/</td>
+				<td>Contains CSS and JavaScript files.</td>
+			</tr>
+			<tr>
+				<td>bin/</td>
+				<td>Contains a command line tool. Other custom scripts can be put here.</td>
+			</tr>
+			<tr>
+				<td>
+					composer.json<br>
+					composer.lock
+				</td>
+				<td>Composer dependencies and configurations.</td>
+			</tr>
+			<tr>
+				<td>config/</td>
+				<td>Various configuration files including database, routes, etc., see <a href="config.html">Configurations</a>.</td>
+			</tr>
+			<tr>
+				<td>
+					dev.php<br>
+					dev.sh
+				</td>
+				<td>Development server.</td>
+			</tr>
+			<tr>
+				<td>node_modules/</td>
+				<td>Node.js modules.</td>
+			</tr>
+			<tr>
+				<td>
+					package.json<br>
+					package-lock.json
+				</td>
+				<td>Node.js dependencies.</td>
+			</tr>
+			<tr>
+				<td>phpunit.xml</td>
+				<td>PHPUnit configurations.</td>
+			</tr>
+			<tr>
+				<td>public/</td>
+				<td>Contains <code class="language-bash">index.php</code> (the entry point of the application), static files and compiled assets.</td>
+			</tr>
+			<tr>
+				<td>sessions/</td>
+				<td>Sessions files.</td>
+			</tr>
+			<tr>
+				<td>src/</td>
+				<td>Application source code.</td>
+			</tr>
+			<tr>
+				<td>templates/</td>
+				<td>HTML templates.</td>
+			</tr>
+			<tr>
+				<td>tests/</td>
+				<td>Unit tests.</td>
+			</tr>
+			<tr>
+				<td>vendor/</td>
+				<td>Composer packages.</td>
+			</tr>
+		</tbody>
+	</table>
+</p>
+
+<h2 id="starting-up">
+	<a href="#starting-up">Starting Up the Website</a>
+</h2>
+
+<p>You can skip this part if you have set up the web server.</p>
+
+<h4 id="starting-up-built-in-server">
+	<a href="#starting-up-built-in-server">PHP Built-in server</a>
+</h4>
+
+<p>To start the built-in server, use the command:</p>
+<pre><code class="language-bash">./dev.sh</code></pre>
+<p>Then open the browser and navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+<p><code class="language-bash">dev.sh</code> is a shortcut to start the built-in server for development. For details of the built-in server, please visit <a href="http://php.net/manual/en/features.commandline.webserver.php">http://php.net/manual/en/features.commandline.webserver.php</a>.</p>

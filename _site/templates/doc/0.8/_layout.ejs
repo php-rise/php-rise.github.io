@@ -1,0 +1,94 @@
+// imports.base: ../common/_layout
+<%
+var css;
+var js;
+var title;
+var body;
+var menus = [
+	{
+		name: 'Getting Started',
+		url: 'getting-started.html',
+		children: [
+			{
+				name: 'Requirements',
+				url: `/doc/${version}/getting-started.html#requirements`
+			},
+			{
+				name: 'Installation',
+				url: `/doc/${version}/getting-started.html#install`
+			},
+			{
+				name: 'Project Structure',
+				url: `/doc/${version}/getting-started.html#project-structure`
+			},
+			{
+				name: 'Starting Up the Website',
+				url: `/doc/${version}/getting-started.html#starting-up`
+			},
+		]
+	},
+	{
+		name: 'Routing',
+		url: `/doc/${version}/routing.html`,
+		children: [
+			{
+				name: 'Building routes',
+				url: `/doc/${version}/routing.html#build`
+			},
+			{
+				name: 'Generating routes',
+				url: `/doc/${version}/routing.html#generate`
+			},
+		]
+	},
+	{
+		name: 'Dependency Injection',
+		url: `/doc/${version}/dependency-injection.html`,
+		children: [
+			{
+				name: 'Constructor Injection',
+				url: `/doc/${version}/dependency-injection.html#constructor-injection`
+			},
+			{
+				name: 'Method Injection',
+				url: `/doc/${version}/dependency-injection.html#method-injection`
+			},
+		]
+	},
+	{
+		name: 'Request and Response',
+		url: `/doc/${version}/handler.html`,
+		children: [
+			{
+				name: 'Handlers',
+				url: `/doc/${version}/handler.html#handlers`
+			},
+			{
+				name: 'Middlewares',
+				url: `/doc/${version}/handler.html#middlewares`
+			},
+		]
+	},
+	{
+		name: 'Configurations',
+		url: `/doc/${version}/config.html`,
+		children: [
+			{
+				name: 'Routing',
+				url: `/doc/${version}/config.html#routing`
+			},
+		]
+	},
+	{
+		name: 'PSR',
+		url: `/doc/${version}/psr.html`,
+		children: [
+			{
+				name: 'PSR-7 and PSR-15',
+				url: `/doc/${version}/psr.html#psr7-psr15`
+			},
+		]
+	},
+];
+%>
+<%-imports.base({css, js, title, body, menus})%>

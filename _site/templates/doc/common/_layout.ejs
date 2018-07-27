@@ -1,0 +1,30 @@
+// imports.css: ~/templates/common/_css
+// imports.js: ~/templates/common/_js
+// imports.header: ./_header
+// imports.sidebar: ./_sidebar
+<%
+var css;
+var js;
+var title;
+var menus;
+
+if (!Array.isArray(css)) {
+	css = [];
+}
+if (!Array.isArray(js)) {
+	js = [];
+}
+
+css.push('/static/prism.css', '/dist/doc.css?v=1');
+js.push('/static/prism.js', '/dist/doc.bundle.js?v=1');
+%>
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title><%=title ? title + ' - ' : ''%>Rise Framework</title>
+<%-imports.css({paths: css})%>
+<%-imports.header()%>
+<div class="container">
+	<%-imports.sidebar({menus})%>
+	<main class="main-content"><%-body%></main>
+</div>
+<%-imports.js({paths: js})%>

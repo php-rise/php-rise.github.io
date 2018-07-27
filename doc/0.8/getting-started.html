@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>Getting Started - Rise Framework</title>
+<link rel="stylesheet" href="/static/prism.css">
+<link rel="stylesheet" href="/dist/doc.css?v=1">
+<header>
+	<div class="container">
+		<div id="toggle-sidebar">MENU</div>
+		<a id="logo" href="/" title="Home page">PHP Rise</a>
+	</div>
+</header>
+<div class="container">
+	<div id="sidebar" class="sidebar">
+		<nav class="menu">
+			<ul class="lv-1">
+				<li>
+					<a href="getting-started.html">Getting Started</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/getting-started.html#requirements">Requirements</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/getting-started.html#install">Installation</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/getting-started.html#project-structure">Project Structure</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/getting-started.html#starting-up">Starting Up the Website</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/doc/0.8/routing.html">Routing</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/routing.html#build">Building routes</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/routing.html#generate">Generating routes</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/doc/0.8/dependency-injection.html">Dependency Injection</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/dependency-injection.html#constructor-injection">Constructor Injection</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/dependency-injection.html#method-injection">Method Injection</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/doc/0.8/handler.html">Request and Response</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/handler.html#handlers">Handlers</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/handler.html#middlewares">Middlewares</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/doc/0.8/config.html">Configurations</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/config.html#routing">Routing</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/doc/0.8/psr.html">PSR</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/psr.html#psr7-psr15">PSR-7 and PSR-15</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<main class="main-content">
+		<h1>Getting Started</h1>
+		<div class="toc">
+			<div class="menu">
+				<ul class="lv-1">
+					<li>
+						<a href="#requirements">Requirements</a>
+					</li>
+					<li>
+						<a href="#install">Installation</a>
+						<ul class="lv-2">
+							<li>
+								<a href="#install-using-composer">Using composer</a>
+							</li>
+							<li>
+								<a href="#install-clone-skeleton">Clone skeleton project</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#project-structure">Project Structure</a>
+					</li>
+					<li>
+						<a href="#starting-up">Starting Up the Website</a>
+						<ul class="lv-2">
+							<li>
+								<a href="starting-up-built-in-server">PHP Built-in Server</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<h2 id="requirements">
+			<a href="#requirements">Requirements</a>
+		</h2>
+		<p>
+			<ul>
+				<li>PHP 7</li>
+			</ul>
+		</p>
+		<h2 id="install">
+			<a href="#install">Installation</a>
+		</h2>
+		<h4 id="install-using-composer">
+			<a href="#install-using-composer">Using composer</a>
+		</h4>
+		<pre><code class="language-bash">composer create-project php-rise/rise-skeleton my-project</code></pre>
+		<h4 id="install-clone-skeleton">
+			<a href="#install-clone-skeleton">Clone skeleton project</a>
+		</h4>
+		<pre><code class="language-bash">git clone -b 0.8 --depth 1 https://github.com/php-rise/rise-skeleton.git my-project
+cd my-project
+rm -rf .git
+composer install
+</code></pre>
+		<h2 id="project-structure">
+			<a href="#project-structure">Project Structure</a>
+		</h2>
+		<p>
+			<table class="responsive-2-col">
+				<thead>
+					<tr>
+						<th>File / Folder</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>assets/</td>
+						<td>Contains CSS and JavaScript files.</td>
+					</tr>
+					<tr>
+						<td>bin/</td>
+						<td>Contains a command line tool. Other custom scripts can be put here.</td>
+					</tr>
+					<tr>
+						<td>
+							composer.json<br> composer.lock
+						</td>
+						<td>Composer dependencies and configurations.</td>
+					</tr>
+					<tr>
+						<td>config/</td>
+						<td>Various configuration files including database, routes, etc., see <a href="config.html">Configurations</a>.</td>
+					</tr>
+					<tr>
+						<td>
+							dev.php<br> dev.sh
+						</td>
+						<td>Development server.</td>
+					</tr>
+					<tr>
+						<td>node_modules/</td>
+						<td>Node.js modules.</td>
+					</tr>
+					<tr>
+						<td>
+							package.json<br> package-lock.json
+						</td>
+						<td>Node.js dependencies.</td>
+					</tr>
+					<tr>
+						<td>phpunit.xml</td>
+						<td>PHPUnit configurations.</td>
+					</tr>
+					<tr>
+						<td>public/</td>
+						<td>Contains <code class="language-bash">index.php</code> (the entry point of the application), static files and compiled assets.</td>
+					</tr>
+					<tr>
+						<td>sessions/</td>
+						<td>Sessions files.</td>
+					</tr>
+					<tr>
+						<td>src/</td>
+						<td>Application source code.</td>
+					</tr>
+					<tr>
+						<td>templates/</td>
+						<td>HTML templates.</td>
+					</tr>
+					<tr>
+						<td>tests/</td>
+						<td>Unit tests.</td>
+					</tr>
+					<tr>
+						<td>vendor/</td>
+						<td>Composer packages.</td>
+					</tr>
+				</tbody>
+			</table>
+		</p>
+		<h2 id="starting-up">
+			<a href="#starting-up">Starting Up the Website</a>
+		</h2>
+		<p>You can skip this part if you have set up the web server.</p>
+		<h4 id="starting-up-built-in-server">
+			<a href="#starting-up-built-in-server">PHP Built-in server</a>
+		</h4>
+		<p>To start the built-in server, use the command:</p>
+		<pre><code class="language-bash">./dev.sh</code></pre>
+		<p>Then open the browser and navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+		<p><code class="language-bash">dev.sh</code> is a shortcut to start the built-in server for development. For details of the built-in server, please visit <a href="http://php.net/manual/en/features.commandline.webserver.php">http://php.net/manual/en/features.commandline.webserver.php</a>.</p>
+	</main>
+</div>
+<script src="/static/prism.js"></script>
+<script src="/dist/doc.bundle.js?v=1"></script>

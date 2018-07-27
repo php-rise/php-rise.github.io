@@ -1,0 +1,82 @@
+@media screen and (max-width: 688px) {
+	body.noscroll {
+		overflow: hidden;
+	}
+
+	header {
+		position: fixed;
+		top: 0;
+		height: 40px;
+
+		.open-sidebar {
+			display: block;
+		}
+	}
+
+	#toggle-sidebar {
+		display: block;
+	}
+
+	.sidebar {
+		display: none;
+		background: #fff;
+		position: fixed;
+		top: 40px;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding-top: 0;
+		width: auto;
+		overflow-y: auto;
+
+		&.active {
+			display: block;
+		}
+
+		.menu {
+			.lv-1 > li {
+				padding: 0;
+			}
+
+			li > a {
+				border-bottom: 1px solid #eee;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+		}
+	}
+
+	.main-content {
+		margin-left: 0;
+		margin-top: 40px;
+	}
+
+	table.responsive-2-col {
+		display: block;
+
+		> thead {
+			display: none;
+		}
+
+		> tbody {
+			> tr {
+				display: block;
+				border: 1px solid #ccc;
+				border-bottom: 0;
+
+				&:last-child {
+					border-bottom: 1px solid #ccc;
+				}
+
+				> td {
+					display: block;
+					border: 0;
+
+					&:first-child {
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+}

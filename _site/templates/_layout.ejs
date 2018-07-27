@@ -1,0 +1,15 @@
+// imports.css: ~/templates/common/_css
+// imports.js: ~/templates/common/_js
+<%
+var css = css || [];
+var js = js || [];
+var title;
+
+css.push('/dist/root.css?v=1');
+%>
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title><%=title ? title + ' - ' : ''%>Rise Framework</title>
+<%-imports.css({paths: css})%>
+<%-body%>
+<%-imports.js({paths: js})%>
