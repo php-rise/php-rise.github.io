@@ -47,9 +47,7 @@ class TemplateEngine {
 			for (const name in imports) {
 				const _importPath = this.resolveImportPath(imports[name], importPath)
 
-				if (!this.imports[_importPath]
-					&& !_importPath.startsWith(templatePrefix)
-				) {
+				if (!this.imports[_importPath] && !_importPath.startsWith(templatePrefix)) {
 					try {
 						this.imports[_importPath] = require(_importPath)
 					} catch (e) {
