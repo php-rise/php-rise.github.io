@@ -1,10 +1,12 @@
 * {
-  box-sizing: border-box;
-  color: inherit; }
+  box-sizing: border-box; }
 
 html, body, p, ol, ul, h1, h2, h3, h4, h5, h6 {
   padding: 0;
   margin: 0; }
+
+a {
+  color: inherit; }
 
 ol, ul {
   -webkit-margin-before: 0;
