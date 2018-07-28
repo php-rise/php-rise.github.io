@@ -1,6 +1,10 @@
 // extend.name: ./_layout
 // extend.props.title: Getting Started
 // imports.toc: ../common/_toc
+// imports.template: ~/helpers/template
+<%
+const heading = imports.template.heading;
+%>
 <h1>Getting Started</h1>
 
 <%-imports.toc({menus: [
@@ -32,15 +36,13 @@
 		children: [
 			{
 				name: 'PHP Built-in Server',
-				url: 'starting-up-built-in-server'
+				url: '#starting-up-built-in-server'
 			},
 		]
 	},
 ]})%>
 
-<h2 id="requirements">
-	<a href="#requirements">Requirements</a>
-</h2>
+<%-heading(2, 'requirements', 'Requirements')%>
 
 <p>
 	<ul>
@@ -48,19 +50,13 @@
 	</ul>
 </p>
 
-<h2 id="install">
-	<a href="#install">Installation</a>
-</h2>
+<%-heading(2, 'install', 'Installation')%>
 
-<h4 id="install-using-composer">
-	<a href="#install-using-composer">Using composer</a>
-</h4>
+<%-heading(4, 'install-using-composer', 'Using composer')%>
 
 <pre><code class="language-bash">composer create-project php-rise/rise-skeleton my-project</code></pre>
 
-<h4 id="install-clone-skeleton">
-	<a href="#install-clone-skeleton">Clone skeleton project</a>
-</h4>
+<%-heading(4, 'install-clone-skeleton', 'Clone skeleton project')%>
 
 <pre><code class="language-bash">git clone -b <%=version%> --depth 1 https://github.com/php-rise/rise-skeleton.git my-project
 cd my-project
@@ -68,9 +64,7 @@ rm -rf .git
 composer install
 </code></pre>
 
-<h2 id="project-structure">
-	<a href="#project-structure">Project Structure</a>
-</h2>
+<%-heading(2, 'project-structure', 'Project Structure')%>
 
 <p>
 	<table class="responsive-2-col">
@@ -150,15 +144,11 @@ composer install
 	</table>
 </p>
 
-<h2 id="starting-up">
-	<a href="#starting-up">Starting Up the Website</a>
-</h2>
+<%-heading(2, 'starting-up', 'Starting Up the Website')%>
 
 <p>You can skip this part if you have set up the web server.</p>
 
-<h4 id="starting-up-built-in-server">
-	<a href="#starting-up-built-in-server">PHP Built-in server</a>
-</h4>
+<%-heading(4, 'starting-up-built-in-server', 'PHP Built-in server')%>
 
 <p>To start the built-in server, use the command:</p>
 <pre><code class="language-bash">./dev.sh</code></pre>

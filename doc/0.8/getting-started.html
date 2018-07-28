@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Getting Started - Rise Framework</title>
 <link rel="stylesheet" href="/static/prism.css">
 <link rel="stylesheet" href="/dist/doc.css?v=1">
@@ -31,17 +32,6 @@
 					</ul>
 				</li>
 				<li>
-					<a href="/doc/0.8/routing.html">Routing</a>
-					<ul class="lv-2">
-						<li>
-							<a href="/doc/0.8/routing.html#build">Building routes</a>
-						</li>
-						<li>
-							<a href="/doc/0.8/routing.html#generate">Generating routes</a>
-						</li>
-					</ul>
-				</li>
-				<li>
 					<a href="/doc/0.8/dependency-injection.html">Dependency Injection</a>
 					<ul class="lv-2">
 						<li>
@@ -49,6 +39,17 @@
 						</li>
 						<li>
 							<a href="/doc/0.8/dependency-injection.html#method-injection">Method Injection</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/doc/0.8/routing.html">Routing</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/routing.html#build">Building routes</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/routing.html#generate">Generating routes</a>
 						</li>
 					</ul>
 				</li>
@@ -108,39 +109,29 @@
 						<a href="#starting-up">Starting Up the Website</a>
 						<ul class="lv-2">
 							<li>
-								<a href="starting-up-built-in-server">PHP Built-in Server</a>
+								<a href="#starting-up-built-in-server">PHP Built-in Server</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 			</div>
-		</div>
-		<h2 id="requirements">
-			<a href="#requirements">Requirements</a>
-		</h2>
+		</div><a id="requirements" class="anchor"></a>
+		<h2><a href="#requirements">Requirements</a></h2>
 		<p>
 			<ul>
 				<li>PHP 7</li>
 			</ul>
-		</p>
-		<h2 id="install">
-			<a href="#install">Installation</a>
-		</h2>
-		<h4 id="install-using-composer">
-			<a href="#install-using-composer">Using composer</a>
-		</h4>
-		<pre><code class="language-bash">composer create-project php-rise/rise-skeleton my-project</code></pre>
-		<h4 id="install-clone-skeleton">
-			<a href="#install-clone-skeleton">Clone skeleton project</a>
-		</h4>
+		</p><a id="install" class="anchor"></a>
+		<h2><a href="#install">Installation</a></h2><a id="install-using-composer" class="anchor"></a>
+		<h4><a href="#install-using-composer">Using composer</a></h4>
+		<pre><code class="language-bash">composer create-project php-rise/rise-skeleton my-project</code></pre><a id="install-clone-skeleton" class="anchor"></a>
+		<h4><a href="#install-clone-skeleton">Clone skeleton project</a></h4>
 		<pre><code class="language-bash">git clone -b 0.8 --depth 1 https://github.com/php-rise/rise-skeleton.git my-project
 cd my-project
 rm -rf .git
 composer install
-</code></pre>
-		<h2 id="project-structure">
-			<a href="#project-structure">Project Structure</a>
-		</h2>
+</code></pre><a id="project-structure" class="anchor"></a>
+		<h2><a href="#project-structure">Project Structure</a></h2>
 		<p>
 			<table class="responsive-2-col">
 				<thead>
@@ -214,14 +205,10 @@ composer install
 					</tr>
 				</tbody>
 			</table>
-		</p>
-		<h2 id="starting-up">
-			<a href="#starting-up">Starting Up the Website</a>
-		</h2>
-		<p>You can skip this part if you have set up the web server.</p>
-		<h4 id="starting-up-built-in-server">
-			<a href="#starting-up-built-in-server">PHP Built-in server</a>
-		</h4>
+		</p><a id="starting-up" class="anchor"></a>
+		<h2><a href="#starting-up">Starting Up the Website</a></h2>
+		<p>You can skip this part if you have set up the web server.</p><a id="starting-up-built-in-server" class="anchor"></a>
+		<h4><a href="#starting-up-built-in-server">PHP Built-in server</a></h4>
 		<p>To start the built-in server, use the command:</p>
 		<pre><code class="language-bash">./dev.sh</code></pre>
 		<p>Then open the browser and navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>

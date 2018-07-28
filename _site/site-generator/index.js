@@ -27,6 +27,7 @@ class SiteGenerator {
 		for (const path in this.routes) {
 			const route = this.routes[path]
 			let content = ''
+
 			if (typeof route === 'string') {
 				const props = {}
 				const matches = VERSION_PATTERN.exec(route)
@@ -38,8 +39,10 @@ class SiteGenerator {
 			} else if (typeof route === 'function') {
 				content = route()
 			}
+
 			const filePath = dir + '/' + path
 			const _dir = dirname(filePath)
+
 			mkdirp.sync(_dir)
 			writeFileSync(filePath, content)
 		}

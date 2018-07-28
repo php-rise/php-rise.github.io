@@ -1,6 +1,10 @@
 // extend.name: ./_layout
 // extend.props.title: Routing
 // imports.toc: ../common/_toc
+// imports.template: ~/helpers/template
+<%
+const heading = imports.template.heading;
+%>
 <h1>Routing</h1>
 
 <%-imports.toc({menus: [
@@ -32,10 +36,6 @@
 	},
 ]})%>
 
-<h2 id="build">
-	<a href="#build">Building routes</a>
-</h2>
+<%-heading(2, 'build', 'Building routes')%>
 
-<h4 id="build-basic">
-	<a href="#build-basic">Basic</a>
-</h4>
+<%-heading(4, 'build-basic', 'Basic')%>
