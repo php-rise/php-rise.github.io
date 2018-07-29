@@ -35,10 +35,16 @@
 					<a href="/doc/0.8/dependency-injection.html">Dependency Injection</a>
 					<ul class="lv-2">
 						<li>
+							<a href="/doc/0.8/dependency-injection.html#container">IoC Container</a>
+						</li>
+						<li>
 							<a href="/doc/0.8/dependency-injection.html#constructor-injection">Constructor Injection</a>
 						</li>
 						<li>
 							<a href="/doc/0.8/dependency-injection.html#method-injection">Method Injection</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/dependency-injection.html#rules">Injection Rules</a>
 						</li>
 					</ul>
 				</li>
@@ -89,6 +95,9 @@
 			<div class="menu">
 				<ul class="lv-1">
 					<li>
+						<a href="#container">IoC Container</a>
+					</li>
+					<li>
 						<a href="#constructor-injection">Constructor Injection</a>
 					</li>
 					<li>
@@ -102,16 +111,112 @@
 							</li>
 						</ul>
 					</li>
+					<li>
+						<a href="#rules">Injection Rules</a>
+						<ul class="lv-2">
+							<li>
+								<a href="#rules-bind">Global bindings</a>
+							</li>
+							<li>
+								<a href="#rules-config">Specific bindings</a>
+							</li>
+						</ul>
+					</li>
 				</ul>
 			</div>
-		</div><a id="constructor-injection" class="anchor"></a>
+		</div><a id="container" class="anchor"></a>
+		<h2><a href="#container">IoC Container</a></h2>
+		<p>IoC Container is the most important part of this framework. It should be initialized before running the application. In <code class="language-bash">public/index.php</code>, you will see:</p>
+		<pre><code class="language-php">$container = new Rise\Container();
+</code></pre>
+		<p>Then the container is set up for dependency injection by autowiring. Dependencies will be injected according to the type hinting provided in the parameters of constructor.</p>
+		<p>After setting up the container, an entry point is needed to activate dependency injection, e.g.:</p>
+		<pre><code class="language-php">$app = $container->get(Rise\Application::class);
+</code></pre>
+		<p>This will initialized the application and its dependencies.</p><a id="constructor-injection" class="anchor"></a>
 		<h2><a href="#constructor-injection">Constructor Injection</a></h2>
-		<p>
-		</p><a id="method-injection" class="anchor"></a>
-		<h2><a href="#method-injection">Method Injection</a></h2><a id="method-injection-handlers" class="anchor"></a>
-		<h4><a href="#method-injection-handlers">Handlers / Middlewares</a></h4>
-		<p>
-		</p>
+		<p>When constructing an instance of a class, the container will resolve and inject an instance of dependency class to the constructor. Let's have an example.</p>
+		<pre><code class="language-php">class Bike {
+	private $distance = 0;
+
+	public function move($distance) {
+		$this->distance += $distance;
+	}
+}
+
+class Person {
+	public function __construct(Bike $bike) {
+		$this->bike = $bike;
+	}
+
+	public function drive($distance) {
+		$this->bike->move($distance);
+	}
+}
+
+$container = new Rise\Container();
+$person = $container->get(Person::class);
+$person->drive(100);
+</code></pre>
+		<p>Before constructing the person instance, the container will first resolve the bike instance, then the bike instance will be injected when constructing the person instance. User does not need to worry about the dependencies of the class, as the container
+			will resolve them automatically.</p><a id="method-injection" class="anchor"></a>
+		<h2><a href="#method-injection">Method Injection</a></h2>
+		<p>Method injection will have a limited usage in this framework, it is only allowed in handlers and middlewares.</p><a id="method-injection-handlers" class="anchor"></a>
+		<h4><a href="#method-injection-handlers">Handlers / Middlewares</a></h4>In handlers or middlewares, you can inject dependencies directly in a method. e.g.:
+		<pre><code class="language-php">use Rise\Response;
+
+class Handler {
+	public function showText(Response $response) {
+		$response->setHeader('Content-Type', 'text/plain')
+			->setBody('Some text');
+	}
+}
+</code></pre><a id="rules" class="anchor"></a>
+		<h2><a href="#rules">Injection Rules</a></h2><a id="rules-bind" class="anchor"></a>
+		<h4><a href="#rules-bind">Global bindings</a></h4>
+		<p><code class="language-php">Rise\Container::bind()</code> can be used to bind a class or interface to another class.</p>
+		<pre><code class="language-php">interface Fruit {}
+
+class Apple implements Fruit {}
+
+$container = new Rise\Container();
+$container->bind(Fruit::class, Apple::class);
+$apple = $container->get(Fruit::class); // An instance of apple.
+</code></pre><a id="rules-config" class="anchor"></a>
+		<h4><a href="#rules-config">Specific bindings</a></h4>
+		<p>If you do not want a global binding, you can configure some rules for dependency injection of a class.</p>
+		<pre><code class="language-php">interface Fruit {}
+
+class Apple implements Fruit {}
+
+class Blackberry implements Fruit {}
+
+class Alan {
+	public function __construct(Fruit $fruit) {
+		$this->fruit = $fruit;
+	}
+}
+
+class Bosco {
+	public function __construct(Fruit $fruit) {
+		$this->fruit = $fruit;
+	}
+}
+
+$container = new Rise\Container();
+
+// When constructing an instance of Alan, resolve an instance of
+// Apple as the constructor argument.
+$container->configClass(Alan::class, [
+	Fruit::class => Apple::class
+]);
+
+// When constructing an instance of Bosco, resolve an instance of
+// Blackberry as the constructor argument.
+$container->configClass(Bosco::class, [
+	Fruit::class => Blackberry::class
+]);
+</code></pre>
 	</main>
 </div>
 <script src="/static/prism.js"></script>

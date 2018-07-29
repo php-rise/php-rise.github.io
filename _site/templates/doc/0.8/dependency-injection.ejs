@@ -2,12 +2,18 @@
 // extend.props.title: Dependency Injection
 // imports.toc: ../common/_toc
 // imports.template: ~/helpers/template
+// imports.snippet: ~/helpers/snippet
 <%
 const heading = imports.template.heading;
+const block = imports.snippet.block;
 %>
 <h1>Dependency Injection</h1>
 
 <%-imports.toc({menus: [
+	{
+		name: 'IoC Container',
+		url: '#container',
+	},
 	{
 		name: 'Constructor Injection',
 		url: '#constructor-injection',
@@ -26,16 +32,60 @@ const heading = imports.template.heading;
 			},
 		]
 	},
+	{
+		name: 'Injection Rules',
+		url: '#rules',
+		children: [
+			{
+				name: 'Global bindings',
+				url: '#rules-bind',
+			},
+			{
+				name: 'Specific bindings',
+				url: '#rules-config',
+			},
+		]
+	},
 ]})%>
+
+<%-heading(2, 'container', 'IoC Container')%>
+
+<p>IoC Container is the most important part of this framework. It should be initialized before running the application. In <code class="language-bash">public/index.php</code>, you will see:</p>
+<%-block(`doc/${version}/dependency-injection/container-initialization.php`)%>
+<p>Then the container is set up for dependency injection by autowiring. Dependencies will be injected according to the type hinting provided in the parameters of constructor.</p>
+
+<p>After setting up the container, an entry point is needed to activate dependency injection, e.g.:</p>
+<%-block(`doc/${version}/dependency-injection/container-di-entry.php`)%>
+<p>This will initialized the application and its dependencies.</p>
 
 <%-heading(2, 'constructor-injection', 'Constructor Injection')%>
 
-<p>
-</p>
+<p>When constructing an instance of a class, the container will resolve and inject an instance of dependency class to the constructor. Let's have an example.</p>
+
+<%-block(`doc/${version}/dependency-injection/constructor-injection.php`)%>
+
+<p>Before constructing the person instance, the container will first resolve the bike instance, then the bike instance will be injected when constructing the person instance. User does not need to worry about the dependencies of the class, as the container will resolve them automatically.</p>
 
 <%-heading(2, 'method-injection', 'Method Injection')%>
 
+<p>Method injection will have a limited usage in this framework, it is only allowed in handlers and middlewares.</p>
+
 <%-heading(4, 'method-injection-handlers', 'Handlers / Middlewares')%>
 
-<p>
-</p>
+In handlers or middlewares, you can inject dependencies directly in a method. e.g.:
+
+<%-block(`doc/${version}/dependency-injection/method-injection.php`)%>
+
+<%-heading(2, 'rules', 'Injection Rules')%>
+
+<%-heading(4, 'rules-bind', 'Global bindings')%>
+
+<p><code class="language-php">Rise\Container::bind()</code> can be used to bind a class or interface to another class.</p>
+
+<%-block(`doc/${version}/dependency-injection/rules-bind.php`)%>
+
+<%-heading(4, 'rules-config', 'Specific bindings')%>
+
+<p>If you do not want a global binding, you can configure some rules for dependency injection of a class.</p>
+
+<%-block(`doc/${version}/dependency-injection/rules-config.php`)%>
