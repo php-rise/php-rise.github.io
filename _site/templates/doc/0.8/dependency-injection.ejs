@@ -54,7 +54,8 @@ const block = imports.snippet.block;
 <%-block(`doc/${version}/dependency-injection/container-initialization.php`)%>
 <p>Then the container is set up for dependency injection by autowiring. Dependencies will be injected according to the type hinting provided in the parameters of constructor.</p>
 
-<p>After setting up the container, an entry point is needed to activate dependency injection, e.g.:</p>
+<p>After setting up the container, an entry point is needed to activate dependency injection</p>
+<p><code class="language-php">Rise\Container::get()</code> is used to resolve a class from container, e.g.:</p>
 <%-block(`doc/${version}/dependency-injection/container-di-entry.php`)%>
 <p>This will initialized the application and its dependencies.</p>
 
@@ -86,6 +87,6 @@ In handlers or middlewares, you can inject dependencies directly in a method. e.
 
 <%-heading(4, 'rules-config', 'Specific bindings')%>
 
-<p>If you do not want a global binding, you can configure some rules for dependency injection of a class.</p>
+<p><code class="language-php">Rise\Container::configClass()</code> can be used if you want to configure some rules for dependency injection of a class.</p>
 
 <%-block(`doc/${version}/dependency-injection/rules-config.php`)%>
