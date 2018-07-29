@@ -133,7 +133,7 @@
 		<pre><code class="language-php">$container = new Rise\Container();
 </code></pre>
 		<p>Then the container is set up for dependency injection by autowiring. Dependencies will be injected according to the type hinting provided in the parameters of constructor.</p>
-		<p>After setting up the container, an entry point is needed to activate dependency injection</p>
+		<p>After setting up the container, an entry point is needed to activate dependency injection.</p>
 		<p><code class="language-php">Rise\Container::get()</code> is used to resolve a class from container, e.g.:</p>
 		<pre><code class="language-php">$app = $container->get(Rise\Application::class);
 </code></pre>
@@ -162,8 +162,8 @@ $container = new Rise\Container();
 $person = $container->get(Person::class);
 $person->drive(100);
 </code></pre>
-		<p>Before constructing the person instance, the container will first resolve the bike instance, then the bike instance will be injected when constructing the person instance. User does not need to worry about the dependencies of the class, as the container
-			will resolve them automatically.</p><a id="method-injection" class="anchor"></a>
+		<p>Before constructing the <code class="language-php">Person</code> instance, the container will first resolve the <code class="language-php">Bike</code> instance, then the <code class="language-php">Bike</code> instance will be injected when constructing
+			the <code class="language-php">Person</code> instance. User does not need to worry about the dependencies of the class, as the container will resolve them automatically.</p><a id="method-injection" class="anchor"></a>
 		<h2><a href="#method-injection">Method Injection</a></h2>
 		<p>Method injection will have a limited usage in this framework, it is only allowed in handlers and middlewares.</p><a id="method-injection-handlers" class="anchor"></a>
 		<h4><a href="#method-injection-handlers">Handlers / Middlewares</a></h4>In handlers or middlewares, you can inject dependencies directly in a method. e.g.:

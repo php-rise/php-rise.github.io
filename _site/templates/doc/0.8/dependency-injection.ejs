@@ -54,7 +54,7 @@ const block = imports.snippet.block;
 <%-block(`doc/${version}/dependency-injection/container-initialization.php`)%>
 <p>Then the container is set up for dependency injection by autowiring. Dependencies will be injected according to the type hinting provided in the parameters of constructor.</p>
 
-<p>After setting up the container, an entry point is needed to activate dependency injection</p>
+<p>After setting up the container, an entry point is needed to activate dependency injection.</p>
 <p><code class="language-php">Rise\Container::get()</code> is used to resolve a class from container, e.g.:</p>
 <%-block(`doc/${version}/dependency-injection/container-di-entry.php`)%>
 <p>This will initialized the application and its dependencies.</p>
@@ -65,7 +65,7 @@ const block = imports.snippet.block;
 
 <%-block(`doc/${version}/dependency-injection/constructor-injection.php`)%>
 
-<p>Before constructing the person instance, the container will first resolve the bike instance, then the bike instance will be injected when constructing the person instance. User does not need to worry about the dependencies of the class, as the container will resolve them automatically.</p>
+<p>Before constructing the <code class="language-php">Person</code> instance, the container will first resolve the <code class="language-php">Bike</code> instance, then the <code class="language-php">Bike</code> instance will be injected when constructing the <code class="language-php">Person</code> instance. User does not need to worry about the dependencies of the class, as the container will resolve them automatically.</p>
 
 <%-heading(2, 'method-injection', 'Method Injection')%>
 
