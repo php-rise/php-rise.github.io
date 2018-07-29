@@ -24,7 +24,7 @@ js.push('/static/prism.js', '/dist/doc.bundle.js?v=1');
 <title><%=title ? title + ' - ' : ''%>Rise Framework</title>
 <%-imports.css({paths: css})%>
 <%-imports.header()%>
-<div class="container">
+<div id="sidebarize-wrapper" class="container">
 	<%-imports.sidebar({menus})%>
 	<main class="main-content"><%-body%></main>
 </div>

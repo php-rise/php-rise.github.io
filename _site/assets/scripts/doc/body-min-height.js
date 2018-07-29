@@ -1,7 +1,5 @@
 export function calcMinHeight() {
-	let maxHeight = 0
-	for (const child of document.body.children) {
-		maxHeight = Math.max(maxHeight, child.offsetHeight)
-	}
-	document.body.style.minHeight = maxHeight + 'px'
+	const wrapper = document.getElementById('sidebarize-wrapper')
+	const sidebar = document.getElementById('sidebar')
+	wrapper.style.minHeight = sidebar.offsetHeight + 'px'
 }
