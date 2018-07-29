@@ -1,9 +1,11 @@
 {
   "scripts": {
+    "site:build": "node _site",
     "js:build": "rollup --config _site/config/rollup.config.js",
     "js:watch": "rollup -w --config _site/config/rollup.config.js",
     "css:build": "sass _site/assets/styles/root/index.scss:dist/root.css _site/assets/styles/doc/index.scss:dist/doc.css",
-    "css:watch": "sass --watch _site/assets/styles/root/index.scss:dist/root.css _site/assets/styles/doc/index.scss:dist/doc.css"
+    "css:watch": "sass --watch _site/assets/styles/root/index.scss:dist/root.css _site/assets/styles/doc/index.scss:dist/doc.css",
+    "build": "npm run site:build && npm run js:build && npm run css:build"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

@@ -1,2 +1,0 @@
-#!/bin/sh
-node _site && npm run js:build && npm run css:build
