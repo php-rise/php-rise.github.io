@@ -2,8 +2,10 @@
 // extend.props.title: Routing
 // imports.toc: ../common/_toc
 // imports.template: ~/helpers/template
+// imports.snippet: ~/helpers/snippet
 <%
 const heading = imports.template.heading;
+const block = imports.snippet.block;
 %>
 <h1>Routing</h1>
 
@@ -17,6 +19,10 @@ const heading = imports.template.heading;
 				url: '#build-basic'
 			},
 			{
+				name: 'Child Scope',
+				url: '#build-create-scope'
+			},
+			{
 				name: 'Prefix',
 				url: '#build-prefix'
 			},
@@ -26,16 +32,69 @@ const heading = imports.template.heading;
 			},
 			{
 				name: 'Middlewares',
-				url: '#build-namespace'
-			},
-			{
-				name: 'Parameters',
-				url: '#build-namespace'
+				url: '#build-middlewares'
 			},
 		]
 	},
+	{
+		name: 'Generating Routes',
+		url: '#generate',
+	}
 ]})%>
 
 <%-heading(2, 'build', 'Building routes')%>
 
 <%-heading(4, 'build-basic', 'Basic')%>
+
+<p>In <code class="language-bash">config/routes.php</code>, you will see a variable <code class="language-php">$scope</code> is used to define routes. A <strong>scope</strong> can have a number of child scopes, there is a single root scope, just like a tree.</p>
+
+<p>You can use the provided API to set up the routes with different HTTP methods.</p>
+<pre>
+	<code class="language-php">Rise\Router\Scope::options($path, $handler, [$name])</code>
+	<code class="language-php">Rise\Router\Scope::get($path, $handler, [$name])</code>
+	<code class="language-php">Rise\Router\Scope::head($path, $handler, [$name])</code>
+	<code class="language-php">Rise\Router\Scope::post($path, $handler, [$name])</code>
+	<code class="language-php">Rise\Router\Scope::put($path, $handler, [$name])</code>
+	<code class="language-php">Rise\Router\Scope::delete($path, $handler, [$name])</code>
+	<code class="language-php">Rise\Router\Scope::trace($path, $handler, [$name])</code>
+	<code class="language-php">Rise\Router\Scope::connect($path, $handler, [$name])</code>
+</pre>
+<p>They all have the same parameter list.</p>
+<p><code class="language-php">$path</code> : A string to match with the request path. It can contain variables enclosed in braces, e.g.: <code class="language-php">'products/{id}'</code>.</p>
+<p><code class="language-php">$handler</code> : A string consists of two parts separated by a dot. The first part is the class name and the second part is the method name. e.g.: <code class="language-php">'App\Handlers\Blog.show'</code></p>
+<p><code class="language-php">$name</code> : This is optional. Route name can be used to generate URL.</p>
+
+<p>Some examples:</p>
+
+<%-block(`doc/${version}/routing/build-basic.php`)%>
+
+<%-heading(4, 'build-create-scope', 'Child Scope')%>
+
+<p><code class="language-php">Rise\Router\Scope::createScope(Closure $function)</code> can be used to create a child scope. This is useful for grouping some similar routes. Examples of usage are shown in the next section.</p>
+
+<%-heading(4, 'build-prefix', 'Prefix')%>
+
+<p><code class="language-php">Rise\Router\Scope::prefix(string $prefix)</code> can set the common prefix of the path in a scope. e.g.:</p>
+<%-block(`doc/${version}/routing/build-prefix.php`)%>
+
+<p>It also supports route parameters, so you can do something like this:</p>
+<%-block(`doc/${version}/routing/build-prefix-param.php`)%>
+
+<%-heading(4, 'build-namespace', 'Namespace')%>
+
+<p><code class="language-php">Rise\Router\Scope::namespace(string $namespace)</code> can set the common namespace in a scope. e.g.:</p>
+<%-block(`doc/${version}/routing/build-namespace.php`)%>
+
+<%-heading(4, 'build-middlewares', 'Middlewares')%>
+
+<p><code class="language-php">Rise\Router\Scope::use(array $middlewares)</code> is used to set middlewares in a scope. e.g.:</p>
+<%-block(`doc/${version}/routing/build-middlewares.php`)%>
+
+<%-heading(2, 'generate', 'Generating Routes')%>
+
+<p><code class="language-php">Rise\Router\UrlGenerator::generate(string $name, [array $params])</code> will return the URL of a named route. e.g.:</p>
+
+<p>In <code class="language-bash">config/routes.php</code>:</p>
+<%-block(`doc/${version}/routing/generate-config.php`)%>
+<p>In <code class="language-bash">src/App/Handlers/Home.php</code>:</p>
+<%-block(`doc/${version}/routing/generate-handler.php`)%>
