@@ -52,16 +52,19 @@
 					<a href="/doc/0.8/routing.html">Routing</a>
 					<ul class="lv-2">
 						<li>
-							<a href="/doc/0.8/routing.html#build">Building routes</a>
+							<a href="/doc/0.8/routing.html#build">Build routes</a>
 						</li>
 						<li>
-							<a href="/doc/0.8/routing.html#generate">Generating routes</a>
+							<a href="/doc/0.8/routing.html#generate">Generate routes</a>
 						</li>
 					</ul>
 				</li>
 				<li>
 					<a href="/doc/0.8/handler.html">Request and Response</a>
 					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/handler.html#introduction">Introduction</a>
+						</li>
 						<li>
 							<a href="/doc/0.8/handler.html#handlers">Handlers</a>
 						</li>
@@ -93,7 +96,7 @@
 			<div class="menu">
 				<ul class="lv-1">
 					<li>
-						<a href="#build">Building routes</a>
+						<a href="#build">Build routes</a>
 						<ul class="lv-2">
 							<li>
 								<a href="#build-basic">Basic</a>
@@ -113,7 +116,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="#generate">Generating Routes</a>
+						<a href="#generate">Generate Routes</a>
 					</li>
 				</ul>
 			</div>
@@ -202,7 +205,7 @@ use Rise\Response;
 use Rise\Router\UrlGenerator;
 
 class Home {
-	public function index(UrlGenerator $urlGenerator, Response $response) {
+	public function index(Response $response, UrlGenerator $urlGenerator) {
 		$response->redirect($urlGenerator->generate('product.show', ['id' => 1])); // Redirect to http://localhost:3000/products/1
 	}
 }
