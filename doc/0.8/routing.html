@@ -121,7 +121,7 @@
 				</ul>
 			</div>
 		</div><a id="build" class="anchor"></a>
-		<h2><a href="#build">Building routes</a></h2><a id="build-basic" class="anchor"></a>
+		<h2><a href="#build">Build routes</a></h2><a id="build-basic" class="anchor"></a>
 		<h4><a href="#build-basic">Basic</a></h4>
 		<p>In <code class="language-bash">config/routes.php</code>, you will see a variable <code class="language-php">$scope</code> is used to define routes. A <strong>scope</strong> can have a number of child scopes, there is a single root scope, just like a
 			tree.</p>
@@ -192,7 +192,7 @@ $scope->get('/blogs', 'Blog.list');
 $scope->get('/', 'App\Handlers\Home.index');
 $scope->get('/blogs', 'App\Handlers\Blog.list');
 </code></pre><a id="generate" class="anchor"></a>
-		<h2><a href="#generate">Generating Routes</a></h2>
+		<h2><a href="#generate">Generate Routes</a></h2>
 		<p><code class="language-php">Rise\Router\UrlGenerator::generate(string $name, [array $params])</code> will return the URL of a named route. e.g.:</p>
 		<p>In <code class="language-bash">config/routes.php</code>:</p>
 		<pre><code class="language-php">$scope->get('/', 'App\Handlers\Home.index', 'root');
