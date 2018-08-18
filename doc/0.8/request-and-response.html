@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request and Response - Rise Framework</title>
+<link rel="stylesheet" href="/static/prism.css">
+<link rel="stylesheet" href="/dist/doc.css?v=1">
+<header>
+	<div class="container">
+		<div id="toggle-sidebar">MENU</div>
+		<a id="logo" href="/" title="Home page">PHP Rise</a>
+	</div>
+</header>
+<div id="sidebarize-wrapper" class="container">
+	<div id="sidebar" class="sidebar">
+		<nav class="menu">
+			<ul class="lv-1">
+				<li>
+					<a href="getting-started.html">Getting Started</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/getting-started.html#requirements">Requirements</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/getting-started.html#install">Installation</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/getting-started.html#project-structure">Project Structure</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/getting-started.html#starting-up">Starting Up the Website</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/doc/0.8/dependency-injection.html">Dependency Injection</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/dependency-injection.html#container">IoC Container</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/dependency-injection.html#constructor-injection">Constructor Injection</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/dependency-injection.html#method-injection">Method Injection</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/dependency-injection.html#rules">Injection Rules</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/doc/0.8/routing.html">Routing</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/routing.html#build">Build routes</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/routing.html#generate">Generate routes</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/doc/0.8/request-and-response.html">Request and Response</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/request-and-response.html#introduction">Introduction</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/request-and-response.html#request">Request</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/request-and-response.html#response">Response</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/request-and-response.html#handlers">Handlers</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/request-and-response.html#middlewares">Middlewares</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/doc/0.8/template.html">Template</a>
+				</li>
+				<li>
+					<a href="/doc/0.8/config.html">Configurations</a>
+				</li>
+				<li>
+					<a href="/doc/0.8/psr.html">PSR</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/psr.html#psr7-psr15">PSR-7 and PSR-15</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<main class="main-content">
+		<h1>Request and Response</h1>
+		<div class="toc">
+			<div class="menu">
+				<ul class="lv-1">
+					<li>
+						<a href="#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="#request">Request</a>
+					</li>
+					<li>
+						<a href="#response">Response</a>
+						<ul class="lv-2">
+							<li>
+								<a href="#response-modes">Modes</a>
+							</li>
+							<li>
+								<a href="#response-send">Send Response</a>
+							</li>
+							<li>
+								<a href="#response-redirect">Redirection</a>
+							</li>
+							<li>
+								<a href="#response-status-code">Status Code</a>
+							</li>
+							<li>
+								<a href="#response-headers">Headers</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#handlers">Handlers</a>
+					</li>
+					<li>
+						<a href="#middlewares">Middlewares</a>
+					</li>
+				</ul>
+			</div>
+		</div><a id="introduction" class="anchor"></a>
+		<h2><a href="#introduction">Introduction</a></h2>
+		<p>Request and response are singletons. They can be injected to any class to retrieve request data or modifiy the output of the response.</p><a id="request" class="anchor"></a>
+		<h2><a href="#request">Request</a></h2>
+		<p><code class="language-php">Rise\Request</code> contains methods for accessing data of the incoming request.</p>
+		<p><code class="language-php">Rise\Request::getHttpVersion()</code> returns the HTTP version of the incoming request.</p>
+		<p><code class="language-php">Rise\Request::getMethod()</code> returns the HTTP method of the incoming request.</p>
+		<p><code class="language-php">Rise\Request::getPath()</code> returns the path of the request URL.</p>
+		<p><code class="language-php">Rise\Request::getHost()</code> returns the host of the request URL.</p>
+		<p><code class="language-php">Rise\Request::getHeader(string $key)</code> returns the value of a HTTP header.</p>
+		<p><code class="language-php">Rise\Request::getQuery()</code> returns GET variables.</p>
+		<p><code class="language-php">Rise\Request::getInput()</code> returns POST, PUT or DELETE variables.</p>
+		<p><code class="language-php">Rise\Request::getUrlParams()</code> returns URL parameters defined in routes configurations.</p>
+		<p><code class="language-php">Rise\Request::getUrlParam(string $key)</code> returns a URL parameter.</p>
+		<p><code class="language-php">Rise\Request::getFiles()</code> returns uploaded files.</p><a id="response" class="anchor"></a>
+		<h2><a href="#response">Response</a></h2><a id="response-modes" class="anchor"></a>
+		<h4><a href="#response-modes">Modes</a></h4>
+		<p>There are three modes in response that will affect the usage of <code class="language-php">Rise\Response::send()</code>, they are <code class="language-php">'STRING'</code>, <code class="language-php">'FILE'</code> and <code class="language-php">'STREAM'</code>.</p>
+		<p><code class="language-php">'STRING'</code> is the default mode. It will send the body of the response once.</p>
+		<p><code class="language-php">'FILE'</code> for sending file.</p>
+		<p><code class="language-php">'STREAM'</code> for continuously sending content.</p>
+		<p><code class="language-php">Rise\Response::setMode(string $mode)</code> will set the mode. e.g.</p>
+		<pre><code class="language-php">/* @var $response \Rise\Response */
+$response->setMode(\Rise\Response::STRING);
+$response->setMode(\Rise\Response::FILE);
+$response->setMode(\Rise\Response::STREAM);
+</code></pre><a id="response-send" class="anchor"></a>
+		<h4><a href="#response-send">Send Response</a></h4>
+		<p><code class="language-php">Rise\Response::send($content)</code> will send the response to browser. It will send headers first, then it will send the body of the response.</p>
+		<p>In <code class="language-php">'STRING'</code> mode, <code class="language-php">$content</code> will be the body of the response.</p>
+		<p>In <code class="language-php">'FILE'</code> mode, <code class="language-php">$content</code> will be the path of the file.</p>
+		<p>In <code class="language-php">'STREAM'</code> mode, <code class="language-php">$content</code> will be a chunk of the body. You can call <code class="language-php">Rise\Response::send($content)</code> multiple times to keep sending the message.</p>
+		<pre><code class="language-php">/* @var $response \Rise\Response */
+
+// STRING mode
+$response->setMode(\Rise\Response::STRING);
+$response->send('Hello world'); // This will send "Hello world" to the browser.
+$response->send('Good bye'); // This will not send anything to the browser.
+
+// FILE mode
+$response->setMode(\Rise\Response::FILE);
+$response->send('/var/www/file'); // This will send the file "/var/www/file".
+
+// STREAM mode
+$response->setMode(\Rise\Response::STREAM);
+$response->send('Hello');
+$response->send(' world'); // It can send more than once.
+</code></pre>
+		<p>For convenience, <code class="language-php">Rise\Response::sendFile(string $file)</code> can be used to send a file directly.</p>
+		<pre><code class="language-php">/* @var $response \Rise\Response */
+$response->sendFile('/var/www/file');
+// is equivalent to
+$response->setMode(\Rise\Response::FILE)->send('/var/www/file');
+</code></pre><a id="response-redirect" class="anchor"></a>
+		<h4><a href="#response-redirect">Redirection</a></h4>
+		<p><code class="language-php">Rise\Response::redirect(string $url, boolean $permanent = false)</code> will send an HTTP redirection.</p>
+		<p><code class="language-php">Rise\Response::redirectRoute(string $name, array $params = [], boolean $permanent = false)</code> will send an HTTP redirection with the URL generated by a named route.</p><a id="response-status-code" class="anchor"></a>
+		<h4><a href="#response-status-code">Status Code</a></h4>
+		<p><code class="language-php">Rise\Response::setStatusCode(int $code)</code> will set the status code of the response. It should be called <strong>before</strong> <code class="language-php">Rise\Response::send()</code>.</p><a id="response-headers" class="anchor"></a>
+		<h4><a href="#response-headers">Headers</a></h4>
+		<p>Response headers can be updated <strong>before</strong> the response has been sent.</p>
+		<p><code class="language-php">Rise\Response::hasHeader(string $name)</code> is used to check whether a header exists.</p>
+		<p><code class="language-php">Rise\Response::getHeaders()</code> returns all headers.</p>
+		<p><code class="language-php">Rise\Response::getHeader(string $name)</code> return the headers of a field name.</p>
+		<p><code class="language-php">Rise\Response::setHeader(string $name, $values)</code> set a header.</p>
+		<p><code class="language-php">Rise\Response::addHeader(string $name, $value)</code> add a header with the same field name.</p>
+		<p><code class="language-php">Rise\Response::unsetHeader(string $name)</code> unset all headers of a field name.</p><a id="handlers" class="anchor"></a>
+		<h2><a href="#handlers">Handlers</a></h2>
+		<p>Handlers are the entry points configured in <a href="routing.html#build-basic">routing</a>. Method injection is supported in handlers. To send a response in handler, we can inject <code class="language-php">Rise\Response</code> in the method. For example,
+			we have set a handler <code class="language-php">'App\Handers\Home.index'</code> for our root. To make it send <code class="language-php">'Hello world'</code> to the browser, we can change it to:</p>
+		<pre><code class="language-php">namespace App\Handlers;
+
+use Rise\Response;
+
+class Home {
+	public function index(Response $response) {
+		$response->send('Hello world');
+	}
+}
+</code></pre><a id="middlewares" class="anchor"></a>
+		<h2><a href="#middlewares">Middlewares</a></h2>
+		<p>Middlewares can be configured in <a href="routing.html#build-middlewares">routing</a>. Just like handlers, method injection is supported in middlewares. The difference between middleware and handler is that a <code class="language-php">Closure</code>			is injected into the method of a middleware and it is needed to be executed in order to run the next middleware or handler.</p>
+		<p>The simplest middleware will be like this, which do nothing but run the next middleware or handler.</p>
+		<pre><code class="language-php">use Closure;
+
+class Middleware {
+	public function doNothing(Closure $next) {
+		$next();
+	}
+}
+</code></pre>
+	</main>
+</div>
+<script src="/static/prism.js"></script>
+<script src="/dist/doc.bundle.js?v=1"></script>
