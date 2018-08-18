@@ -1,1 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://php-rise.github.io/index.html</loc></url><url><loc>https://php-rise.github.io/doc/0.8/config.html</loc></url><url><loc>https://php-rise.github.io/doc/0.8/dependency-injection.html</loc></url><url><loc>https://php-rise.github.io/doc/0.8/getting-started.html</loc></url><url><loc>https://php-rise.github.io/doc/0.8/request-and-response.html</loc></url><url><loc>https://php-rise.github.io/doc/0.8/routing.html</loc></url></urlset>
+<?xml version="1.0" encoding="utf-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://php-rise.github.io/index.html</loc></url>
+<url><loc>https://php-rise.github.io/doc/0.8/config.html</loc></url>
+<url><loc>https://php-rise.github.io/doc/0.8/dependency-injection.html</loc></url>
+<url><loc>https://php-rise.github.io/doc/0.8/getting-started.html</loc></url>
+<url><loc>https://php-rise.github.io/doc/0.8/request-and-response.html</loc></url>
+<url><loc>https://php-rise.github.io/doc/0.8/routing.html</loc></url>
+</urlset>

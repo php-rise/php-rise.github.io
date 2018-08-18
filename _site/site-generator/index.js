@@ -51,10 +51,10 @@ class SiteGenerator {
 	}
 
 	writeSitemap(filePath) {
-		let content = '<?xml version="1.0" encoding="utf-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+		let content = '<?xml version="1.0" encoding="utf-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 
 		for (const path in this.routes) {
-			content += '<url><loc>https://php-rise.github.io' + path + '</loc></url>'
+			content += '<url><loc>https://php-rise.github.io' + path + '</loc></url>\n'
 		}
 
 		content += '</urlset>'
