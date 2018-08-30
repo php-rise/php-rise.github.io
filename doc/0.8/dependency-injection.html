@@ -157,14 +157,14 @@ class Person {
 		$this->bike = $bike;
 	}
 
-	public function drive($distance) {
+	public function ride($distance) {
 		$this->bike->move($distance);
 	}
 }
 
 $container = new Rise\Container();
 $person = $container->get(Person::class);
-$person->drive(100);
+$person->ride(100);
 </code></pre>
 		<p>Before constructing the <code class="language-php">Person</code> instance, the container will first resolve the <code class="language-php">Bike</code> instance, then the <code class="language-php">Bike</code> instance will be injected when constructing
 			the <code class="language-php">Person</code> instance. User does not need to worry about the dependencies of the class, as the container will resolve them automatically.</p><a id="method-injection" class="anchor"></a>

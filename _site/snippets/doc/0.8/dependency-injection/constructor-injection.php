@@ -12,11 +12,11 @@ class Person {
 		$this->bike = $bike;
 	}
 
-	public function drive($distance) {
+	public function ride($distance) {
 		$this->bike->move($distance);
 	}
 }
 
 $container = new Rise\Container();
 $person = $container->get(Person::class);
-$person->drive(100);
+$person->ride(100);
