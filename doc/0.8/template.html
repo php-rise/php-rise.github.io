@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Configurations - Rise Framework</title>
+<title>Template - Rise Framework</title>
 <link rel="stylesheet" href="/static/prism.css">
 <link rel="stylesheet" href="/dist/doc.css?v=1">
 <header>
@@ -107,7 +107,55 @@
 			</ul>
 		</nav>
 	</div>
-	<main class="main-content"></main>
+	<main class="main-content">
+		<h1>Template</h1>
+		<div class="toc">
+			<div class="menu">
+				<ul class="lv-1">
+					<li>
+						<a href="#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="#render">Render</a>
+					</li>
+					<li>
+						<a href="#reuse">Reuse</a>
+						<ul class="lv-2">
+							<li>
+								<a href="#reuse-include">Include</a>
+							</li>
+							<li>
+								<a href="#reuse-extend">Extend</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div><a id="introduction" class="anchor"></a>
+		<h2><a href="#introduction">Introduction</a></h2>
+		<p>We use native PHP for template rendering. All template files are located under the <code class="language-bash">templates</code> directory with <code class="language-bash">.phtml</code> extension.</p><a id="render" class="anchor"></a>
+		<h2><a href="#render">Render</a></h2>
+		<p>To output a dynamc HTML page to browser, we need to create a template. Let's create a template file called <code class="language-bash">hello/someone.phtml</code> in <code class="language-bash">templates</code> directory.</p>
+		<pre><code class="language-php">&lt;p&gt;Hello, &lt;?=$name?&gt;.&lt;/p&gt;
+</code></pre>
+		<p>Then create a handler file <code class="language-bash">src/Handlers/Hello.php</code> for passing value to the template.</p>
+		<pre><code class="language-php">namespace App\Handlers;
+
+use Rise\{Response, Template};
+
+class Hello {
+	public function someone(Response $response, Template $template) {
+		$html = $template-&gt;render(&#39;hello/someone&#39;, [
+			&#39;name&#39; =&gt; &#39;Rise&#39;,
+		]);
+        $response-&gt;asHtml()-&gt;send($html);
+	}
+}
+</code></pre><a id="reuse" class="anchor"></a>
+		<h2><a href="#reuse">Reuse</a></h2><a id="reuse-include" class="anchor"></a>
+		<h4><a href="#reuse-include">Include</a></h4><a id="reuse-extend" class="anchor"></a>
+		<h4><a href="#reuse-extend">Extend</a></h4>
+	</main>
 </div>
 <script src="/static/prism.js"></script>
 <script src="/dist/doc.bundle.js?v=1"></script>

@@ -81,6 +81,17 @@
 				</li>
 				<li>
 					<a href="/doc/0.8/template.html">Template</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/template.html#introduction">Introduction</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/template.html#render">Render</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/template.html#reuse">Reuse</a>
+						</li>
+					</ul>
 				</li>
 				<li>
 					<a href="/doc/0.8/config.html">Configurations</a>
@@ -147,62 +158,62 @@
 		<p><code class="language-php">$handler</code> : A string consists of two parts separated by a dot. The first part is the class name and the second part is the method name. e.g.: <code class="language-php">'App\Handlers\Blog.show'</code></p>
 		<p><code class="language-php">$name</code> : This is optional. Route name can be used to generate URL.</p>
 		<p>Some examples:</p>
-		<pre><code class="language-php">$scope->get('/', 'App\Handlers\Home.index', 'root');
-$scope->get('/blogs', 'App\Handlers\Blog.list');
-$scope->get('/blogs/{id}', 'App\Handlers\Blog.show');
-$scope->post('/blogs', 'App\Handlers\Blog.create');
-$scope->put('/blogs/{id}', 'App\Handlers\Blog.update');
-$scope->delete('/blogs/{id}', 'App\Handlers\Blog.delete');
+		<pre><code class="language-php">$scope-&gt;get(&#39;/&#39;, &#39;App\Handlers\Home.index&#39;, &#39;root&#39;);
+$scope-&gt;get(&#39;/blogs&#39;, &#39;App\Handlers\Blog.list&#39;);
+$scope-&gt;get(&#39;/blogs/{id}&#39;, &#39;App\Handlers\Blog.show&#39;);
+$scope-&gt;post(&#39;/blogs&#39;, &#39;App\Handlers\Blog.create&#39;);
+$scope-&gt;put(&#39;/blogs/{id}&#39;, &#39;App\Handlers\Blog.update&#39;);
+$scope-&gt;delete(&#39;/blogs/{id}&#39;, &#39;App\Handlers\Blog.delete&#39;);
 </code></pre><a id="build-create-scope" class="anchor"></a>
 		<h4><a href="#build-create-scope">Child Scope</a></h4>
 		<p><code class="language-php">Rise\Router\Scope::createScope(Closure $function)</code> can be used to create a child scope. This is useful for grouping some similar routes. Examples of usage are shown in the next section.</p><a id="build-prefix" class="anchor"></a>
 		<h4><a href="#build-prefix">Prefix</a></h4>
 		<p><code class="language-php">Rise\Router\Scope::prefix(string $prefix)</code> can set the common prefix of the path in a scope. e.g.:</p>
-		<pre><code class="language-php">$scope->createScope(function ($scope) {
-	$scope->prefix('/blogs');
+		<pre><code class="language-php">$scope-&gt;createScope(function ($scope) {
+	$scope-&gt;prefix(&#39;/blogs&#39;);
 
-	$scope->get('', 'App\Handlers\Blog.list');
-	$scope->get('/{id}', 'App\Handlers\Blog.show');
-	$scope->post('', 'App\Handlers\Blog.create');
-	$scope->put('/{id}', 'App\Handlers\Blog.update');
-	$scope->delete('/{id}', 'App\Handlers\Blog.delete');
+	$scope-&gt;get(&#39;&#39;, &#39;App\Handlers\Blog.list&#39;);
+	$scope-&gt;get(&#39;/{id}&#39;, &#39;App\Handlers\Blog.show&#39;);
+	$scope-&gt;post(&#39;&#39;, &#39;App\Handlers\Blog.create&#39;);
+	$scope-&gt;put(&#39;/{id}&#39;, &#39;App\Handlers\Blog.update&#39;);
+	$scope-&gt;delete(&#39;/{id}&#39;, &#39;App\Handlers\Blog.delete&#39;);
 });
 </code></pre>
 		<p>It also supports route parameters, so you can do something like this:</p>
-		<pre><code class="language-php">$scope->createScope(function ($scope) {
-	$scope->prefix('/blogs');
+		<pre><code class="language-php">$scope-&gt;createScope(function ($scope) {
+	$scope-&gt;prefix(&#39;/blogs&#39;);
 
-	$scope->get('', 'App\Handlers\Blog.list');
-	$scope->post('', 'App\Handlers\Blog.create');
+	$scope-&gt;get(&#39;&#39;, &#39;App\Handlers\Blog.list&#39;);
+	$scope-&gt;post(&#39;&#39;, &#39;App\Handlers\Blog.create&#39;);
 
-	$scope->createScope(function ($scope) {
-		$scope->prefix('/{id}');
+	$scope-&gt;createScope(function ($scope) {
+		$scope-&gt;prefix(&#39;/{id}&#39;);
 
-		$scope->get('', 'App\Handlers\Blog.show');
-		$scope->put('', 'App\Handlers\Blog.update');
-		$scope->delete('', 'App\Handlers\Blog.delete');
+		$scope-&gt;get(&#39;&#39;, &#39;App\Handlers\Blog.show&#39;);
+		$scope-&gt;put(&#39;&#39;, &#39;App\Handlers\Blog.update&#39;);
+		$scope-&gt;delete(&#39;&#39;, &#39;App\Handlers\Blog.delete&#39;);
 	});
 });
 </code></pre><a id="build-namespace" class="anchor"></a>
 		<h4><a href="#build-namespace">Namespace</a></h4>
 		<p><code class="language-php">Rise\Router\Scope::namespace(string $namespace)</code> can set the common namespace in a scope. e.g.:</p>
-		<pre><code class="language-php">$scope->namespace('App\Handlers');
+		<pre><code class="language-php">$scope-&gt;namespace(&#39;App\Handlers&#39;);
 
-$scope->get('/', 'Home.index');
-$scope->get('/blogs', 'Blog.list');
+$scope-&gt;get(&#39;/&#39;, &#39;Home.index&#39;);
+$scope-&gt;get(&#39;/blogs&#39;, &#39;Blog.list&#39;);
 </code></pre><a id="build-middlewares" class="anchor"></a>
 		<h4><a href="#build-middlewares">Middlewares</a></h4>
 		<p><code class="language-php">Rise\Router\Scope::use(array $middlewares)</code> is used to set middlewares in a scope. e.g.:</p>
-		<pre><code class="language-php">$scope->use(['Rise\Middlewares\Session.run']);
+		<pre><code class="language-php">$scope-&gt;use([&#39;Rise\Middlewares\Session.run&#39;]);
 
-$scope->get('/', 'App\Handlers\Home.index');
-$scope->get('/blogs', 'App\Handlers\Blog.list');
+$scope-&gt;get(&#39;/&#39;, &#39;App\Handlers\Home.index&#39;);
+$scope-&gt;get(&#39;/blogs&#39;, &#39;App\Handlers\Blog.list&#39;);
 </code></pre><a id="generate" class="anchor"></a>
 		<h2><a href="#generate">Generate Routes</a></h2>
 		<p><code class="language-php">Rise\Router\UrlGenerator::generate(string $name, [array $params])</code> will return the URL of a named route. e.g.:</p>
 		<p>In <code class="language-bash">config/routes.php</code>:</p>
-		<pre><code class="language-php">$scope->get('/', 'App\Handlers\Home.index', 'root');
-$scope->get('/products/{id}', 'App\Handlers\Product.show', 'product.show');
+		<pre><code class="language-php">$scope-&gt;get(&#39;/&#39;, &#39;App\Handlers\Home.index&#39;, &#39;root&#39;);
+$scope-&gt;get(&#39;/products/{id}&#39;, &#39;App\Handlers\Product.show&#39;, &#39;product.show&#39;);
 </code></pre>
 		<p>In <code class="language-bash">src/App/Handlers/Home.php</code>:</p>
 		<pre><code class="language-php">namespace App\Handlers;
@@ -212,7 +223,7 @@ use Rise\Router\UrlGenerator;
 
 class Home {
 	public function index(Response $response, UrlGenerator $urlGenerator) {
-		$response->redirect($urlGenerator->generate('product.show', ['id' => 1])); // Redirect to http://localhost:3000/products/1
+		$response-&gt;redirect($urlGenerator-&gt;generate(&#39;product.show&#39;, [&#39;id&#39; =&gt; 1])); // Redirect to http://localhost:3000/products/1
 	}
 }
 </code></pre>

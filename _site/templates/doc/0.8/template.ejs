@@ -1,0 +1,55 @@
+// extend.name: ./_layout
+// extend.props.title: Template
+// imports.toc: ../common/_toc
+// imports.template: ~/helpers/template
+// imports.snippet: ~/helpers/snippet
+<%
+const heading = imports.template.heading;
+const block = imports.snippet.block;
+%>
+<h1>Template</h1>
+
+<%-imports.toc({menus: [
+	{
+		name: 'Introduction',
+		url: '#introduction',
+	},
+	{
+		name: 'Render',
+		url: '#render',
+	},
+	{
+		name: 'Reuse',
+		url: '#reuse',
+		children: [
+			{
+				name: 'Include',
+				url: '#reuse-include'
+			},
+			{
+				name: 'Extend',
+				url: '#reuse-extend'
+			},
+		]
+	},
+]})%>
+
+<%-heading(2, 'introduction', 'Introduction')%>
+
+<p>We use native PHP for template rendering. All template files are located under the <code class="language-bash">templates</code> directory with <code class="language-bash">.phtml</code> extension.</p>
+
+<%-heading(2, 'render', 'Render')%>
+
+<p>To output a dynamc HTML page to browser, we need to create a template. Let's create a template file called <code class="language-bash">hello/someone.phtml</code> in <code class="language-bash">templates</code> directory.</p>
+
+<%-block(`doc/${version}/template/render-template-content.phtml`)%>
+
+<p>Then create a handler file <code class="language-bash">src/Handlers/Hello.php</code> for passing value to the template.</p>
+
+<%-block(`doc/${version}/template/render-handler.php`)%>
+
+<%-heading(2, 'reuse', 'Reuse')%>
+
+<%-heading(4, 'reuse-include', 'Include')%>
+
+<%-heading(4, 'reuse-extend', 'Extend')%>

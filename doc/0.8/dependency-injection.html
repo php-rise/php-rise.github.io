@@ -81,6 +81,17 @@
 				</li>
 				<li>
 					<a href="/doc/0.8/template.html">Template</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/template.html#introduction">Introduction</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/template.html#render">Render</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/template.html#reuse">Reuse</a>
+						</li>
+					</ul>
 				</li>
 				<li>
 					<a href="/doc/0.8/config.html">Configurations</a>
@@ -139,7 +150,7 @@
 		<p>Then the container is set up for dependency injection by autowiring. Dependencies will be injected according to the type hinting provided in the parameters of constructor.</p>
 		<p>After setting up the container, an entry point is needed to activate dependency injection.</p>
 		<p><code class="language-php">Rise\Container::get(string $class)</code> is used to resolve a class from container, e.g.:</p>
-		<pre><code class="language-php">$app = $container->get(Rise\Application::class);
+		<pre><code class="language-php">$app = $container-&gt;get(Rise\Application::class);
 </code></pre>
 		<p>This will initialized the application and its dependencies.</p><a id="constructor-injection" class="anchor"></a>
 		<h2><a href="#constructor-injection">Constructor Injection</a></h2>
@@ -148,23 +159,23 @@
 	private $distance = 0;
 
 	public function move($distance) {
-		$this->distance += $distance;
+		$this-&gt;distance += $distance;
 	}
 }
 
 class Person {
 	public function __construct(Bike $bike) {
-		$this->bike = $bike;
+		$this-&gt;bike = $bike;
 	}
 
 	public function ride($distance) {
-		$this->bike->move($distance);
+		$this-&gt;bike-&gt;move($distance);
 	}
 }
 
 $container = new Rise\Container();
-$person = $container->get(Person::class);
-$person->ride(100);
+$person = $container-&gt;get(Person::class);
+$person-&gt;ride(100);
 </code></pre>
 		<p>Before constructing the <code class="language-php">Person</code> instance, the container will first resolve the <code class="language-php">Bike</code> instance, then the <code class="language-php">Bike</code> instance will be injected when constructing
 			the <code class="language-php">Person</code> instance. User does not need to worry about the dependencies of the class, as the container will resolve them automatically.</p><a id="method-injection" class="anchor"></a>
@@ -175,8 +186,8 @@ $person->ride(100);
 
 class Handler {
 	public function showText(Response $response) {
-		$response->setHeader('Content-Type', 'text/plain')
-			->setBody('Some text');
+		$response-&gt;setHeader(&#39;Content-Type&#39;, &#39;text/plain&#39;)
+			-&gt;setBody(&#39;Some text&#39;);
 	}
 }
 </code></pre><a id="rules" class="anchor"></a>
@@ -188,8 +199,8 @@ class Handler {
 class Apple implements Fruit {}
 
 $container = new Rise\Container();
-$container->bind(Fruit::class, Apple::class);
-$apple = $container->get(Fruit::class); // An instance of apple.
+$container-&gt;bind(Fruit::class, Apple::class);
+$apple = $container-&gt;get(Fruit::class); // An instance of apple.
 </code></pre><a id="rules-config" class="anchor"></a>
 		<h4><a href="#rules-config">Specific bindings</a></h4>
 		<p><code class="language-php">Rise\Container::configClass(string $class, array $rules)</code> can be used if you want to configure some rules for dependency injection of a class.</p>
@@ -201,13 +212,13 @@ class Blackberry implements Fruit {}
 
 class Alan {
 	public function __construct(Fruit $fruit) {
-		$this->fruit = $fruit;
+		$this-&gt;fruit = $fruit;
 	}
 }
 
 class Bosco {
 	public function __construct(Fruit $fruit) {
-		$this->fruit = $fruit;
+		$this-&gt;fruit = $fruit;
 	}
 }
 
@@ -215,14 +226,14 @@ $container = new Rise\Container();
 
 // When constructing an instance of Alan, resolve an instance of
 // Apple as the constructor argument.
-$container->configClass(Alan::class, [
-	Fruit::class => Apple::class
+$container-&gt;configClass(Alan::class, [
+	Fruit::class =&gt; Apple::class
 ]);
 
 // When constructing an instance of Bosco, resolve an instance of
 // Blackberry as the constructor argument.
-$container->configClass(Bosco::class, [
-	Fruit::class => Blackberry::class
+$container-&gt;configClass(Bosco::class, [
+	Fruit::class =&gt; Blackberry::class
 ]);
 </code></pre>
 	</main>

@@ -81,6 +81,17 @@
 				</li>
 				<li>
 					<a href="/doc/0.8/template.html">Template</a>
+					<ul class="lv-2">
+						<li>
+							<a href="/doc/0.8/template.html#introduction">Introduction</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/template.html#render">Render</a>
+						</li>
+						<li>
+							<a href="/doc/0.8/template.html#reuse">Reuse</a>
+						</li>
+					</ul>
 				</li>
 				<li>
 					<a href="/doc/0.8/config.html">Configurations</a>
@@ -160,9 +171,9 @@
 		<p><code class="language-php">'STREAM'</code> for continuously sending content.</p>
 		<p><code class="language-php">Rise\Response::setMode(string $mode)</code> will set the mode. e.g.</p>
 		<pre><code class="language-php">/* @var $response \Rise\Response */
-$response->setMode(\Rise\Response::STRING);
-$response->setMode(\Rise\Response::FILE);
-$response->setMode(\Rise\Response::STREAM);
+$response-&gt;setMode(\Rise\Response::STRING);
+$response-&gt;setMode(\Rise\Response::FILE);
+$response-&gt;setMode(\Rise\Response::STREAM);
 </code></pre><a id="response-send" class="anchor"></a>
 		<h4><a href="#response-send">Send Response</a></h4>
 		<p><code class="language-php">Rise\Response::send($content)</code> will send the response to browser. It will send headers first, then it will send the body of the response.</p>
@@ -172,24 +183,24 @@ $response->setMode(\Rise\Response::STREAM);
 		<pre><code class="language-php">/* @var $response \Rise\Response */
 
 // STRING mode
-$response->setMode(\Rise\Response::STRING);
-$response->send('Hello world'); // This will send "Hello world" to the browser.
-$response->send('Good bye'); // This will not send anything to the browser.
+$response-&gt;setMode(\Rise\Response::STRING);
+$response-&gt;send(&#39;Hello world&#39;); // This will send &#34;Hello world&#34; to the browser.
+$response-&gt;send(&#39;Good bye&#39;); // This will not send anything to the browser.
 
 // FILE mode
-$response->setMode(\Rise\Response::FILE);
-$response->send('/var/www/file'); // This will send the file "/var/www/file".
+$response-&gt;setMode(\Rise\Response::FILE);
+$response-&gt;send(&#39;/var/www/file&#39;); // This will send the file &#34;/var/www/file&#34;.
 
 // STREAM mode
-$response->setMode(\Rise\Response::STREAM);
-$response->send('Hello');
-$response->send(' world'); // It can send more than once.
+$response-&gt;setMode(\Rise\Response::STREAM);
+$response-&gt;send(&#39;Hello&#39;);
+$response-&gt;send(&#39; world&#39;); // It can send more than once.
 </code></pre>
 		<p>For convenience, <code class="language-php">Rise\Response::sendFile(string $file)</code> can be used to send a file directly.</p>
 		<pre><code class="language-php">/* @var $response \Rise\Response */
-$response->sendFile('/var/www/file');
+$response-&gt;sendFile(&#39;/var/www/file&#39;);
 // is equivalent to
-$response->setMode(\Rise\Response::FILE)->send('/var/www/file');
+$response-&gt;setMode(\Rise\Response::FILE)-&gt;send(&#39;/var/www/file&#39;);
 </code></pre><a id="response-redirect" class="anchor"></a>
 		<h4><a href="#response-redirect">Redirection</a></h4>
 		<p><code class="language-php">Rise\Response::redirect(string $url, int $statuCode = 302)</code> will send an HTTP redirection.</p>
@@ -213,7 +224,7 @@ use Rise\Response;
 
 class Home {
 	public function index(Response $response) {
-		$response->send('Hello world');
+		$response-&gt;send(&#39;Hello world&#39;);
 	}
 }
 </code></pre><a id="middlewares" class="anchor"></a>

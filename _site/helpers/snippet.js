@@ -1,5 +1,6 @@
 const {existsSync, readFileSync} = require('fs')
 const {extname} = require('path')
+const {escapeXML} = require('ejs/lib/utils')
 const {root} = require('./path')
 
 function read(filePath) {
@@ -36,7 +37,7 @@ function block(filePath, lang = null) {
 		if (lang === 'phtml') {
 			lang = 'php'
 		}
-		result = '<pre><code class="language-' + lang + '">' + content + '</code></pre>'
+		result = '<pre><code class="language-' + lang + '">' + escapeXML(content) + '</code></pre>'
 	}
 
 	return result
