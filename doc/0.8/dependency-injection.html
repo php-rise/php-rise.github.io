@@ -133,7 +133,7 @@
 			</div>
 		</div><a id="container" class="anchor"></a>
 		<h2><a href="#container">IoC Container</a></h2>
-		<p>IoC Container is the most important part of this framework. It should be initialized before running the application. In <code class="language-bash">public/index.php</code>, you will see:</p>
+		<p>IoC Container should be initialized before running the application. In <code class="language-bash">public/index.php</code>, you will see:</p>
 		<pre><code class="language-php">$container = new Rise\Container();
 </code></pre>
 		<p>Then the container is set up for dependency injection by autowiring. Dependencies will be injected according to the type hinting provided in the parameters of constructor.</p>

@@ -50,7 +50,7 @@ const block = imports.snippet.block;
 
 <%-heading(2, 'container', 'IoC Container')%>
 
-<p>IoC Container is the most important part of this framework. It should be initialized before running the application. In <code class="language-bash">public/index.php</code>, you will see:</p>
+<p>IoC Container should be initialized before running the application. In <code class="language-bash">public/index.php</code>, you will see:</p>
 <%-block(`doc/${version}/dependency-injection/container-initialization.php`)%>
 <p>Then the container is set up for dependency injection by autowiring. Dependencies will be injected according to the type hinting provided in the parameters of constructor.</p>
 
