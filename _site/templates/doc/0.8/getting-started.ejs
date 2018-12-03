@@ -20,10 +20,6 @@ const heading = imports.template.heading;
 				name: 'Using composer',
 				url: '#install-using-composer'
 			},
-			{
-				name: 'Clone skeleton project',
-				url: '#install-clone-skeleton'
-			},
 		]
 	},
 	{
@@ -55,14 +51,6 @@ const heading = imports.template.heading;
 <%-heading(4, 'install-using-composer', 'Using composer')%>
 
 <pre><code class="language-bash">composer create-project php-rise/rise-skeleton my-project</code></pre>
-
-<%-heading(4, 'install-clone-skeleton', 'Clone skeleton project')%>
-
-<pre><code class="language-bash">git clone -b <%=version%> --depth 1 https://github.com/php-rise/rise-skeleton.git my-project
-cd my-project
-rm -rf .git
-composer install
-</code></pre>
 
 <%-heading(2, 'project-structure', 'Project Structure')%>
 
